@@ -458,7 +458,7 @@
         </div>
     </div>
 
-    <!-- Main Content -->
+   
     <div id="main-content">
         <nav>
             <div class="logo">K44L.sh</div>
@@ -811,10 +811,10 @@ echo "Profile loaded successfully."
             ctx.font = fontSize + 'px monospace';
             
             for (let i = 0; i < drops.length; i++) {
-                // Random character
+                
                 const text = matrix[Math.floor(Math.random() * matrix.length)];
                 
-                // Gradient effect for the characters
+             
                 const gradient = ctx.createLinearGradient(0, drops[i] * fontSize, 0, drops[i] * fontSize + fontSize);
                 gradient.addColorStop(0, '#0f0');
                 gradient.addColorStop(1, '#003300');
@@ -822,24 +822,24 @@ echo "Profile loaded successfully."
                 ctx.fillStyle = gradient;
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
                 
-                // Reset to top if drop reaches bottom or randomly
+               
                 if (drops[i] * fontSize > height && Math.random() > 0.975) {
                     drops[i] = 0;
                 }
                 
-                // Move drop down
+               
                 drops[i]++;
             }
         }
 
-        // Terminal Loader
+       
         const loader = document.getElementById('loader');
         const mainContent = document.getElementById('main-content');
         const terminalContent = document.getElementById('terminal-content');
         const progressBar = document.getElementById('progress');
         const progressText = document.getElementById('progress-text');
 
-        // Terminal commands to display
+        
         const commands = [
             { text: "Initializing system...", delay: 500 },
             { text: "Checking security protocols...", delay: 800 },
@@ -856,17 +856,17 @@ echo "Profile loaded successfully."
         let commandIndex = 0;
         let progress = 0;
 
-        // Function to add command to terminal
+        
         function addCommand() {
             if (commandIndex >= commands.length) {
-                // Show main content and hide loader
+                
                 setTimeout(() => {
                     loader.style.opacity = '0';
                     mainContent.style.opacity = '1';
                     
                     setTimeout(() => {
                         loader.style.display = 'none';
-                        // Start matrix animation when loader is complete
+                        
                         setInterval(drawMatrix, 50);
                     }, 500);
                 }, 1000);
@@ -875,7 +875,7 @@ echo "Profile loaded successfully."
 
             const command = commands[commandIndex];
             
-            // Create command line
+            
             const commandLine = document.createElement('div');
             commandLine.className = 'command-line';
             
@@ -886,7 +886,7 @@ echo "Profile loaded successfully."
             commandLine.appendChild(prompt);
             terminalContent.appendChild(commandLine);
             
-            // Type out command with typing effect
+            
             let i = 0;
             const commandText = document.createElement('span');
             commandText.className = 'command';
@@ -899,27 +899,27 @@ echo "Profile loaded successfully."
                 } else {
                     clearInterval(typeInterval);
                     
-                    // Add result line
+                    
                     const resultLine = document.createElement('div');
                     resultLine.textContent = `[OK] ${command.text}`;
                     terminalContent.appendChild(resultLine);
                     
-                    // Auto scroll to bottom
+                    
                     terminalContent.scrollTop = terminalContent.scrollHeight;
                     
-                    // Update progress
+                    
                     progress += 10;
                     progressBar.style.width = `${progress}%`;
                     progressText.textContent = `${progress}%`;
                     
-                    // Move to next command
+                    
                     commandIndex++;
                     setTimeout(addCommand, command.delay);
                 }
             }, 50);
         }
 
-        // Smooth scrolling for navigation
+        
         function scrollToSection(selector) {
             const section = document.querySelector(selector);
             if (section) {
@@ -930,7 +930,7 @@ echo "Profile loaded successfully."
             }
         }
 
-        // Initialize nav links for smooth scrolling
+        
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -939,23 +939,23 @@ echo "Profile loaded successfully."
             });
         });
 
-        // Interactive skill cards
+        
         document.querySelectorAll('.skill-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 const fillBar = this.querySelector('.skill-level-fill');
                 const originalWidth = fillBar.style.width;
                 
-                // Animate fill bar on hover
+                
                 fillBar.style.transition = 'width 0.5s ease';
                 fillBar.style.width = '100%';
                 
-                // Reset after hover
+                
                 card.addEventListener('mouseleave', function() {
                     fillBar.style.width = originalWidth;
                 });
             });
             
-            // Add click effect
+            
             card.addEventListener('click', function() {
                 this.style.transform = 'scale(0.95)';
                 setTimeout(() => {
@@ -964,36 +964,36 @@ echo "Profile loaded successfully."
             });
         });
 
-        // Interactive project cards
+        
         document.querySelectorAll('.project-card').forEach(card => {
             card.querySelector('.btn').addEventListener('click', function(e) {
                 e.preventDefault();
                 
-                // Simple modal effect - can be enhanced
+                
                 alert('Project details would open here in a full implementation');
             });
         });
 
-        // Form submission handling
+        
         document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form values
+            
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const subject = document.getElementById('subject').value;
             const message = document.getElementById('message').value;
             
-            // Simple form validation
+            
             if (name && email && subject && message) {
-                // Add terminal-style confirmation
+                
                 const formContainer = document.querySelector('.contact-form');
                 formContainer.innerHTML = '';
                 
                 const responseDiv = document.createElement('div');
                 responseDiv.style.color = '#0f0';
                 
-                // Type writer effect for response
+               
                 const response = `> Message transmission initiated...\n> Recipient: H4CK3R\n> Sender: ${name} (${email})\n> Subject: ${subject}\n> Message length: ${message.length} bytes\n\n> Encrypting message...\n> Establishing secure channel...\n> Message sent successfully!\n\n> H4CK3R will respond shortly.`;
                 
                 let i = 0;
@@ -1005,7 +1005,7 @@ echo "Profile loaded successfully."
                     } else {
                         clearInterval(typeResponse);
                         
-                        // Add reset button
+                        
                         setTimeout(() => {
                             const resetBtn = document.createElement('button');
                             resetBtn.className = 'btn';
@@ -1027,11 +1027,11 @@ echo "Profile loaded successfully."
             }
         });
 
-        // Glitch effect enhancement for header
+        
         const glitchText = document.querySelector('.glitch-text');
         
         setInterval(() => {
-            // Random glitch effect
+            
             if (Math.random() > 0.95) {
                 glitchText.style.textShadow = `${(Math.random() * 10) - 5}px ${(Math.random() * 10) - 5}px ${Math.random() * 5}px rgba(0, 255, 0, 0.7)`;
                 
@@ -1041,7 +1041,7 @@ echo "Profile loaded successfully."
             }
         }, 200);
 
-        // Particle effect for header (simplified)
+        
         class Particle {
             constructor() {
                 this.x = Math.random() * width;
@@ -1056,7 +1056,7 @@ echo "Profile loaded successfully."
                 this.x += this.speedX;
                 this.y += this.speedY;
                 
-                // Bounce off edges
+               
                 if (this.x > width || this.x < 0) {
                     this.speedX = -this.speedX;
                 }
@@ -1074,7 +1074,7 @@ echo "Profile loaded successfully."
             }
         }
 
-        // Type writer effect for subtitle
+        
         function typeWriterEffect() {
             const subtitle = document.querySelector('.subtitle');
             const text = subtitle.textContent;
@@ -1091,13 +1091,13 @@ echo "Profile loaded successfully."
             }, 100);
         }
 
-        // Start loader
+        
         window.onload = function() {
-            // First delay to simulate initial loading
+            
             setTimeout(() => {
                 addCommand();
                 
-                // Listen for window resize
+                
                 window.addEventListener('resize', resizeCanvas);
             }, 500);
         };
